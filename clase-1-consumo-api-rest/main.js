@@ -14,10 +14,10 @@ function recarga(){
     .then(data => {
         console.log(data[0].url)   
         const img1 = document.querySelector('.imagen1');
+        // modificamos el atributo src 
         img1.setAttribute('src', data[0].url); 
-        // 
-      
-            const img2 = document.querySelector('.imagen2');
+        const img2 = document.querySelector('.imagen2');
+        // modificamos la propiedad src       
             img2.src = data[0].url;         
     
     })
