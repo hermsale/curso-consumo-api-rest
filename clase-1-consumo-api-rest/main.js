@@ -6,12 +6,28 @@ const URL = 'https://api.thecatapi.com/v1/images/search';
 const btnRecarga = document.querySelector('.recargaImg');
 btnRecarga.addEventListener('click',recarga);
 
-// cambiamos de imagen al hacer click en el boton
-function recarga(){
+// RESUELTO CON PROMESAS
+// function recarga(){
+//     console.log('click');
+//     fetch(URL)
+//     .then(res => res.json()) 
+//     .then(data => {
+//         console.log(data[0].url)   
+//         const img1 = document.querySelector('.imagen1');
+//         img1.setAttribute('src', data[0].url); 
+//         // modificamos la propiedad src       
+//             const img2 = document.querySelector('.imagen2');
+//             img2.src = data[0].url;         
+    
+//     })
+// }
+
+// RESUELTO CON ASYNC AWAIT 
+async function recarga(){
     console.log('click');
-    fetch(URL)
-    .then(res => res.json()) 
-    .then(data => {
+    const response = await fetch(URL)
+    const data = await response.json();
+    
         console.log(data[0].url)   
         const img1 = document.querySelector('.imagen1');
         // modificamos el atributo src 
@@ -20,8 +36,7 @@ function recarga(){
         // modificamos la propiedad src       
             img2.src = data[0].url;         
     
-    })
-}
+    }
 
 
 recarga();
