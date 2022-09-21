@@ -1,8 +1,12 @@
 
+// API KEY 
+const API_KEY = 'live_9vU1zH5wvwihzKOprl7XpQoBpTuLu5eEmYZUiYekMwtjykqGOj8AVrRmXtbqQeZv';
+
 // guardamos el params en un array, aplicamos el join '' para que no separe el contenido del array con ','
 let queryParams = ['?','limit=3'].join('');
+
 // modificamos el queryParams para que nos traiga tres elementos
-const URL = `https://api.thecatapi.com/v1/images/search${queryParams}`;
+const URL = `https://api.thecatapi.com/v1/images/search${queryParams}&api_key=${API_KEY}`;
 
 const btnRecarga = document.querySelector('.recargaImg');
 btnRecarga.addEventListener('click',recarga);
