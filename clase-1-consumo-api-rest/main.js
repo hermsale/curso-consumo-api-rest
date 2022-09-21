@@ -1,7 +1,7 @@
 // https://docs.thecatapi.com/1.0/pagination
 console.log('Se cargo todo OK');
 
-const URL = 'https://api.thecatapi.com/v1/images/search';
+const URL = 'https://api.thecatapi.com/v1/images/search/';
 
 const btnRecarga = document.querySelector('.recargaImg');
 btnRecarga.addEventListener('click',recarga);
@@ -27,7 +27,7 @@ async function recarga(){
     console.log('click');
     const response = await fetch(URL)
     const data = await response.json();
-    
+    console.log(data);
         console.log(data[0].url)   
         const img1 = document.querySelector('.imagen1');
         // modificamos el atributo src 
