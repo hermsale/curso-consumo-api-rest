@@ -12,37 +12,39 @@
     
     <div class="container">
       <h1>Gatos App</h1>
+      <span class="spanError">
+
+      </span>
       <div class="container__img">
         <h2>Imágenes aleatorias</h2>
         
-          <section id="randomMichis">   
+          <section id="randomImg">   
             <article>
-              <img id="img1" alt="Foto gatito aleatorio">
+              <img id="img1" alt="Foto aleatorio">
               <br>
-              <button>Guardar en favoritos</button>
+              <button id="btnFavorites1">Guardar en favoritos</button>
             </article>
         
             <article>
-              <img id="img2" alt="Foto gatito aleatorio">
+              <img id="img2" alt="Foto aleatorio">
               <br>
-              <button>Guardar en favoritos</button>
+              <button id="btnFavorites2">Guardar en favoritos</button>
             </article>
         
             <article>
-              <img id="img3" alt="Foto gatito aleatorio">
+              <img id="img3" alt="Foto aleatorio">
               <br>
-              <button>Guardar en favoritos</button>
+              <button id="btnFavorites3">Guardar en favoritos</button>
             </article>   
         </section>
     </div>
     <button onclick="reload()">Recargar</button>
       
-      <section id="favoritesMichis">
+      <section id="imgFavoritas">
         <h2>Imagenes favoritas</h2>
     
-        <article>
-          <img id="img1" alt="Foto gatito aleatorio">
-          <button>Retirar imagen de favoritos</button>
+        <article id='imgfav'>
+
         </article>
       </section>
   </div>
