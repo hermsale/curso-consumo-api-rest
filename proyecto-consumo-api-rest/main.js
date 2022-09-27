@@ -5,6 +5,7 @@ let queryParams = ['?','limit=3'].join('');
 
 const URL = `https://api.thecatapi.com/v1/images/search${queryParams}&api_key=${API_KEY}`;
 const URLFAVORITES = `https://api.thecatapi.com/v1/favourites?api_key=${API_KEY}`
+// volvemos funcion a la URL  
 const URLFAVORITESDELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}?api_key=${API_KEY}`;
 
 const img1 = document.getElementById('img1');
