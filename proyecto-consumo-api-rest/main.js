@@ -20,12 +20,18 @@ console.log(id)
 async function reload(){
     const response = await fetch(URL);
     const data = await response.json();
+    const btnImg1 = document.getElementById('btnImg1');
+    const btnImg2 = document.getElementById('btnImg2');
+    const btnImg3 = document.getElementById('btnImg3');
 
     img1.src = data[0].url;
     img2.src = data[1].url;
     img3.src = data[2].url;
 
-    
+    // escribiendo de esta forma el addEventListener evitamos que se ejecute automaticamente al cargar la funcion 
+    btnImg1.addEventListener("click", () => (addFavorites(data[0].id)));
+    btnImg2.addEventListener("click", () => (addFavorites(data[1].id)));
+    btnImg3.addEventListener("click", () => (addFavorites(data[2].id)));
 }
 
 reload();
