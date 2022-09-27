@@ -11,6 +11,12 @@ const img1 = document.getElementById('img1');
 const img2 = document.getElementById('img2');
 const img3 = document.getElementById('img3');
 
+function addimg1(id){
+console.log(id)
+// addFavorites(id);
+}
+
+
 async function reload(){
     const response = await fetch(URL);
     const data = await response.json();
@@ -18,6 +24,8 @@ async function reload(){
     img1.src = data[0].url;
     img2.src = data[1].url;
     img3.src = data[2].url;
+
+    
 }
 
 reload();
@@ -66,4 +74,34 @@ async function deleteImg(id){
     }else{
         console.log('hubo un inconveniente');
     }
+}
+
+async function addFavorites(id){
+    console.log(id)
+
+    const response = await fetch(URLFAVORITES,
+        {
+        method:'POST',
+        mode: 'cors',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ // transforma en JSON para que lo reciba el backend
+            image_id : id,
+        }
+        )
+    });
+   
+    const data = await response.json();
+    
+    console.log(response.status);
+    console.log(data.message);
+    if(response.status !== 200){
+        console.log('algo fallo');
+        spanError.innerHTML = 'Ocurrio un problema'+response.status+data.message;
+    }else{
+        console.log('esta todo okey');
+        getFavorites();
+    }
+
 }
