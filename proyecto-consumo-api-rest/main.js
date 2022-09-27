@@ -6,9 +6,9 @@ const spanError = document.querySelector('.spanError');
 // guardamos el params en un array, aplicamos el join '' para que no separe el contenido del array con ','
 let queryParams = ['?','limit=3'].join('');
 
-const URL = `https://api.thecatapi.com/v1/images/search${queryParams}&api_key=${API_KEY}`;
-const URL_FAVORITES = `https://api.thecatapi.com/v1/favourites?api_key=${API_KEY}`;
-const URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}?api_key=${API_KEY}`;
+const URL = `https://api.thecatapi.com/v1/images/search${queryParams}`;
+const URL_FAVORITES = `https://api.thecatapi.com/v1/favourites`;
+const URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`;
 
 const img1 = document.getElementById('img1');
 const img2 = document.getElementById('img2');
@@ -48,7 +48,13 @@ async function reload(){
 async function loadFavorites(){
     const imgFavoritas = document.getElementById('imgFavoritas');
     const imgfav = document.getElementById('imgfav');
-    const res = await fetch(URL_FAVORITES);
+
+    const res = await fetch(URL_FAVORITES,{
+        method: 'GET',
+        headers: {
+            'X-API-KEY': `${API_KEY}`,
+        }
+    });
     const data = await res.json();
     
     console.log('data URL FAVORITES')
@@ -87,14 +93,7 @@ async function loadFavorites(){
             imgFavoritas.appendChild(article);
 
         })
-        // de esta forma concatenamos los resultados usando INNERHTML
-        // data.map(img => {    
-        //     imgfav.innerHTML += `
-        //     <img src=${img.image.url} alt="Foto gatito aleatorio"> 
-            
-        //     <button onclick=deleteFavoriteImg(${img.id})>Retirar imagen de favoritos</button>
-        // `;
-        // });
+
     }
 
 }
@@ -110,6 +109,7 @@ async function addFavorites(id){
         method:'POST',
         mode: 'cors',
         headers:{
+            'X-API-KEY': `${API_KEY}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ // transforma en JSON para que lo reciba el backend
@@ -137,6 +137,9 @@ async function deleteFavoriteImg(id){
     const response = await fetch(URL_FAVORITES_DELETE(id),
         {
         method:'DELETE', 
+        headers: {
+            'X-API-KEY': `${API_KEY}`
+        }
     });
 
     const data = await response.json();
@@ -151,3 +154,6 @@ async function deleteFavoriteImg(id){
 
 }
 
+async function uploadImg(){
+    
+}
