@@ -36,11 +36,8 @@ async function reload(){
     btnImg1.addEventListener("click", () => (addFavorites(data[0].id)));
     btnImg2.addEventListener("click", () => (addFavorites(data[1].id)));
     btnImg3.addEventListener("click", () => (addFavorites(data[2].id)));
-}
-        )
-    });
-   
-    const data = await response.json();
+}   
+    // const data = await response.json();
     
 reload();
 getFavorites();
