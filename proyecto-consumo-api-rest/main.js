@@ -48,13 +48,7 @@ async function reload(){
 async function loadFavorites(){
     const imgFavoritas = document.getElementById('imgFavoritas');
     const imgfav = document.getElementById('imgfav');
-
-    const res = await fetch(URL_FAVORITES,{
-        method: 'GET',
-        headers: {
-            'X-API-KEY': `${API_KEY}`,
-        }
-    });
+    const res = await fetch(URL_FAVORITES);
     const data = await res.json();
     
     console.log('data URL FAVORITES')
@@ -93,7 +87,6 @@ async function loadFavorites(){
             imgFavoritas.appendChild(article);
 
         })
-
     }
 
 }
@@ -155,5 +148,4 @@ async function deleteFavoriteImg(id){
 }
 
 async function uploadImg(){
-    
 }
