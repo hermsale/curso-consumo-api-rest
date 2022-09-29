@@ -1,3 +1,5 @@
+
+
 const API_KEY = 'live_9vU1zH5wvwihzKOprl7XpQoBpTuLu5eEmYZUiYekMwtjykqGOj8AVrRmXtbqQeZv';
 
 const spanError = document.querySelector('.spanError');
@@ -169,7 +171,7 @@ async function uploadImg(){
             'X-API-KEY': `${API_KEY}`,
             // 'Content-Type': 'multipart/form-data',
         },
-        body: formData // NO HACE FALTA TRANSFORMAR NADA YA QUE FORMDATA YA ES JSON
+        body: formData  
         
     });
     const data = await res.json();
