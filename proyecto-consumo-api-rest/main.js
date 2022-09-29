@@ -1,4 +1,15 @@
+// // instanciamos axios 
+// const axios = require('axios');
+
+// // definimos la url 
+// const api = axios.create({
+//     baseURL: 'https://api.thecatapi.com/v1/'
+// });
+
+
 const API_KEY = 'live_9vU1zH5wvwihzKOprl7XpQoBpTuLu5eEmYZUiYekMwtjykqGOj8AVrRmXtbqQeZv';
+// api.defaults.headers.common['Authorization'] = API_KEY;
+
 
 // guardamos el params en un array, aplicamos el join '' para que no separe el contenido del array con ','
 let queryParams = ['?','limit=3'].join('');
