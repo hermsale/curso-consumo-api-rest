@@ -16,10 +16,10 @@ const spanError = document.querySelector('.spanError');
 // guardamos el params en un array, aplicamos el join '' para que no separe el contenido del array con ','
 let queryParams = ['?','limit=3'].join('');
 
-const URL = `https://api.thecatapi.com/v1/images/search${queryParams}`;
+// const URL = `https://api.thecatapi.com/v1/images/search${queryParams}`;
 // const URL_FAVORITES = `https://api.thecatapi.com/v1/favourites`;
-const URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`;
-const URL_UPLOAD_IMAGE = `https://api.thecatapi.com/v1/images/upload`;
+// const URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`;
+// const URL_UPLOAD_IMAGE = `https://api.thecatapi.com/v1/images/upload`;
 
 const img1 = document.getElementById('img1');
 const img2 = document.getElementById('img2');
@@ -127,56 +127,31 @@ async function addFavorites(id){
 
 async function deleteFavoriteImg(id){
     console.log(id);
-    const response = await fetch(URL_FAVORITES_DELETE(id),
-        {
-        method:'DELETE', 
-        headers: {
-            'X-API-KEY': `${API_KEY}`
-        }
-    });
-
-    const data = await response.json();
-
-    if(response.status !== 200){
-        console.log('algo fallo');
-        spanError.innerHTML = 'Ocurrio un problema'+response.status+data.message;
-    }else{
-        console.log('se borro exitosamente la imagen'); 
+    try {
+        const res = await api.delete(`/favourites/${id}`);
+        console.log('se efectuo con exito '+res.status);
         loadFavorites();
+    } catch (error) {
+        console.log('ocurrio un error '+error);
     }
-
 }
 
 async function uploadImg(){
+    try {
     // creamos una instancia de FormData y le enviamos el argumento de form 
     // de esta forma FormData guarda todo lo que haya en el formulario
     const form = document.getElementById('uploadingForm');
     const formData = new FormData(form);
-    console.log(formData)
-    // let imgUp = formData.get('file')
-    // console.log(name.name);
-    const res = await fetch(URL_UPLOAD_IMAGE,{
-        method: 'POST',
-        headers: {
-            'X-API-KEY': `${API_KEY}`,
-            // 'Content-Type': 'multipart/form-data',
-        },
-        body: formData  
-        
-    });
-    const data = await res.json();
+    let imgUp = formData.get('file')
+    console.log(imgUp)
+       const res = await api.post('/images/upload',
+        formData
+        )
+        addFavorites(res.data.id);
+        console.log('se subio con exito '+res.data.id)
 
-    console.log(data);
-
-    if(res.status!==201){
-        console.log('hubo un inconveniente');
-        console.log(data.message);
-        console.log(res.status);
-    }else{
-        console.log('la operacion se efectuo exitosamente');
-        // agrego a favoritos la imagen
-        addFavorites(data.id);
+    } catch (error) {
+        console.log('ocurrio un problema '+error);
     }
-    
     loadFavorites();
 }   
