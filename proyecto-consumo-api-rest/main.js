@@ -23,14 +23,6 @@ let queryParams = ['?','limit=3'].join('');
 // const URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`;
 // const URL_UPLOAD_IMAGE = `https://api.thecatapi.com/v1/images/upload`;
 
-const img1 = document.getElementById('img1');
-const img2 = document.getElementById('img2');
-const img3 = document.getElementById('img3');
-
-function addimg1(id){
-console.log(id)
-// addFavorites(id);
-}
 
 
 async function reload(){
@@ -38,9 +30,9 @@ async function reload(){
     try{
         const res = await api.get('/images/search',{ params: { limit: 3 } });
       
-        const btnFavorites1 = document.querySelector('#btnFavorites1');
-        const btnFavorites2 = document.querySelector('#btnFavorites2');
-        const btnFavorites3 = document.querySelector('#btnFavorites3');
+        const btnFavorites1 = document.querySelector('#btnImg1');
+        const btnFavorites2 = document.querySelector('#btnImg2');
+        const btnFavorites3 = document.querySelector('#btnImg3');
         img1.src = res.data[0].url;
         img2.src = res.data[1].url;
         img3.src = res.data[2].url;
@@ -174,3 +166,5 @@ async function uploadImg(){
     }
     loadFavorites();
 }   
+
+reload();
