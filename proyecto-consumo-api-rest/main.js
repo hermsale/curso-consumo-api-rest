@@ -1,4 +1,15 @@
+// // instanciamos axios 
+// const axios = require('axios');
+
+// // definimos la url 
+// const api = axios.create({
+//     baseURL: 'https://api.thecatapi.com/v1/'
+// });
+
+
 const API_KEY = 'live_9vU1zH5wvwihzKOprl7XpQoBpTuLu5eEmYZUiYekMwtjykqGOj8AVrRmXtbqQeZv';
+// api.defaults.headers.common['Authorization'] = API_KEY;
+
 
 const spanError = document.querySelector('.spanError');
 
